@@ -11,6 +11,7 @@ const TaskForm = ({taskList,setTaskList}) => {
    
 
     const onSubmit = (data)=>{
+      signInWit
         console.log(data);
         const date = new Date();
         const obj = new Task(uuid(),data.title,data.desc,date.toISOString());

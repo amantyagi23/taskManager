@@ -2,29 +2,28 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import { MenuIcon } from 'lucide-react';
+import { Bell, BellElectric, MenuIcon } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Avatar, TextField } from '@mui/material';
+import { useState } from 'react';
 
 
 export default function NavBar() {
+
+  const [isAuth, setIsAuth] = useState(false);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+          
+         <Box sx={{ flexGrow: 1,display:"flex" }}> <Typography variant="h6" component="a" href='/' >
+            Elite-Blogs
           </Typography>
-          <Button color="inherit">Login</Button>
+          <TextField placeholder='Search'/></Box>
+         {isAuth ? <Box display={"flex"}> <Link to={'/create-blog'}>Write</Link>
+         <IconButton> <Bell/></IconButton> <Avatar/></Box>: <><Link to={"/join"}>Join</Link> <Link to={"/login"}>Login</Link></>}
+         
         </Toolbar>
       </AppBar>
     </Box>
