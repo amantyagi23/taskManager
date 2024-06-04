@@ -6,6 +6,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { IconButton } from '@mui/material';
+import { Delete, Edit } from 'lucide-react';
 
 
 
@@ -36,7 +38,7 @@ const TaskList=({taskList})=> {
               <TableCell align="right">{row.title}</TableCell>
               <TableCell align="right">{row.desc}</TableCell>
               <TableCell align="right">{row.createdAt}</TableCell>
-              {/* <TableCell align="right">{row.protein}</TableCell> */}
+              <TableCell align="right"><IconButton><Delete/></IconButton><IconButton><Edit/></IconButton></TableCell>
             </TableRow>
           )):"No Task Found"}
         </TableBody>
