@@ -1,6 +1,8 @@
 import { Box, Container } from "@mui/material"
 
 import NavBar from "../components/NavBar"
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const RootLayout = ({children}) => {
   return (
@@ -10,7 +12,7 @@ const RootLayout = ({children}) => {
         <Box sx={{mt:4}}/>
        {children}
        </Container>
-   
+   <ToastContainer/>
     </>
   )
 }

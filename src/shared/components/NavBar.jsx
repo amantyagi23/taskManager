@@ -6,14 +6,21 @@ import IconButton from '@mui/material/IconButton';
 import { Bell, BellElectric, MenuIcon, MinusCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Avatar, Button, TextField } from '@mui/material';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+
+import { useDispatch, useSelector } from 'react-redux';
 import { decrement } from '../../modules/task/redux';
+import {  logout } from '../../modules/user/redux';
 
 
 export default function NavBar() {
 const dispatch = useDispatch()
-  const [isAuth, setIsAuth] = useState(false);
+  
+const isAuthOrNot = useSelector((state)=>state.user.isAuth)
+
+  const logoutFn=()=>{
+    dispatch(logout());
+    
+  }
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -23,7 +30,7 @@ const dispatch = useDispatch()
             Elite-Blogs
           </Typography>
           <TextField placeholder='Search'/></Box>
-         {isAuth ? <Box display={"flex"}> <Link to={'/create-blog'}>Write</Link>
+         {isAuthOrNot ? <Box display={"flex"}> <Link to={'/create-blog'}>Write</Link> <Button onClick={logoutFn} color='error'>Logout</Button>
          <IconButton> <Bell/></IconButton> <Avatar/></Box>: <><Link to={"/join"}>Join</Link> <Link to={"/login"}>Login</Link></>}
          <Button color='error' onClick={()=>dispatch(decrement())}><MinusCircle/></Button>
 
